@@ -30,12 +30,12 @@ export const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
           {/* Resume button */}
           <div className="flex-shrink-0">
             <a
-              <a href="/thalladachakri1.pdf" download>Resume</a>
+              href="/thalladachakri1.pdf"
               download
               className="relative overflow-hidden px-4 py-2 md:px-6 md:py-3 rounded-lg inline-flex items-center gap-2 
-                       text-purple-400 border border-purple-400
-                       transition-all duration-300 ease-out
-                       hover:text-gray-900 group"
+                         text-purple-400 border border-purple-400
+                         transition-all duration-300 ease-out
+                         hover:text-gray-900 group"
             >
               <span className="relative z-10 flex items-center gap-2 text-sm font-medium">
                 <Download className="w-4 h-4" />
