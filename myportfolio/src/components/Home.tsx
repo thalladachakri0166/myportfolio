@@ -66,7 +66,7 @@ export const Home: React.FC = () => {
           {/* Main Image Container */}
           <div className="relative w-64 h-80 sm:w-80 sm:h-96 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl">
             <img
-              src="/public/images/profile/profile.jpg"
+              src="/images/profile/profile.jpg"
               alt="Thallada Chakri"
               className="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-500"
             />
