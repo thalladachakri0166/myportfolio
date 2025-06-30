@@ -3,9 +3,9 @@ import { Linkedin, ArrowRight } from 'lucide-react';
 
 export const Home: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-between max-w-7xl mx-auto px-4 py-20">
+    <div className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-between max-w-7xl mx-auto px-4 py-20">
       {/* Left Content */}
-      <div className="flex-1 space-y-8 max-w-2xl">
+      <div className="flex-1 space-y-8 max-w-2xl w-full">
         {/* Main Title */}
         <div className="space-y-4">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
@@ -56,17 +56,17 @@ export const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Right Content - Profile Image with Frame */}
-      <div className="hidden lg:flex flex-1 justify-end items-center">
+      {/* Profile Image with Frame - Now visible on all screens */}
+      <div className="flex flex-1 justify-center lg:justify-end items-center w-full mb-12 lg:mb-0">
         <div className="relative">
           {/* Decorative Frame Elements */}
           <div className="absolute -top-4 -left-4 w-20 h-20 border-l-4 border-t-4 border-blue-400"></div>
           <div className="absolute -bottom-4 -right-4 w-20 h-20 border-r-4 border-b-4 border-blue-400"></div>
           
           {/* Main Image Container */}
-          <div className="relative w-80 h-96 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl">
+          <div className="relative w-64 h-80 sm:w-80 sm:h-96 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl">
             <img
-              src="/images/profile/profile.jpg"
+              src="/public/images/profile/profile.jpg"
               alt="Thallada Chakri"
               className="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-500"
             />
