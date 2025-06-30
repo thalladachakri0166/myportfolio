@@ -8,7 +8,7 @@ export const Certifications: React.FC = () => {
       issuer: 'Amazon Web Services',
       date: '2024',
       credential: 'AWS-CP-2024',
-      image: '/public/images/certifications/awscp.png',
+      image: '/images/certifications/awscp.png',
       link: 'https://www.credly.com/badges/7678954e-fde9-4304-b187-5a8c318da5ce/public_url'
     },
     {
@@ -16,7 +16,7 @@ export const Certifications: React.FC = () => {
       issuer: 'Salesforce',
       date: '2024',
       credential: '5116913',
-      image: '/public/images/certifications/salesforce.png',
+      image: '/images/certifications/salesforce.png',
       link: 'https://trailhead.salesforce.com/en/credentials/verification'
     },
     {
