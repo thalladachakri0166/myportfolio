@@ -75,6 +75,25 @@ export const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
                   {section}
                 </button>
               ))}
+              {/* Resume button for mobile */}
+              <a
+                href="/resume/thalladachakri1.pdf"
+                download
+                className="mt-2 relative overflow-hidden px-4 py-3 rounded-lg inline-flex items-center gap-2 
+                           text-purple-400 border border-purple-400
+                           transition-all duration-300 ease-out
+                           hover:text-gray-900 group"
+              >
+                <span className="relative z-10 flex items-center gap-2 text-sm font-medium">
+                  <Download className="w-4 h-4" />
+                  <span>Resume</span>
+                </span>
+                <div className="absolute inset-0 w-full h-full 
+                              bg-purple-400 scale-0 translate-y-[140%] rounded-[20%]
+                              transition-transform duration-500 ease-out
+                              group-hover:scale-150 group-hover:translate-y-0 group-hover:rounded-[50%]">
+                </div>
+              </a>
             </div>
           </div>
         )}
