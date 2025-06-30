@@ -7,18 +7,18 @@ export const Volunteer: React.FC = () => {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   const nssImages = [
-    '/public/images/volunteer/nss/1.jpg',
-    '/public/images/volunteer/nss/2.jpg',
-    '/public/images/volunteer/nss/3.jpg',
-    '/public/images/volunteer/nss/4.jpg',
-    '/public/images/volunteer/nss/5.jpg',
-    '/public/images/volunteer/nss/6.jpg',
+    '/images/volunteer/nss/1.jpg',
+    '/images/volunteer/nss/2.jpg',
+    '/images/volunteer/nss/3.jpg',
+    '/images/volunteer/nss/4.jpg',
+    '/images/volunteer/nss/5.jpg',
+    '/images/volunteer/nss/6.jpg',
   ];
 
   const ariseImages = [
-    '/public/images/volunteer/arise/1.jpg',
-    '/public/images/volunteer/arise/2.jpg',
-    '/public/images/volunteer/arise/3.jpg',
+    '/images/volunteer/arise/1.jpg',
+    '/images/volunteer/arise/2.jpg',
+    '/images/volunteer/arise/3.jpg',
   ];
 
   const handleNextImage = (type: 'nss' | 'arise') => {
