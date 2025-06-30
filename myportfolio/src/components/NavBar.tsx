@@ -26,7 +26,7 @@ export const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
             {/* Download button right on mobile */}
             <div className="ml-auto">
               <a
-                href="/thalladachakri1.pdf"
+                href="/images/profile/thalladachakri1.pdf"
                 download
                 className="relative overflow-hidden px-3 py-2 rounded-lg inline-flex items-center gap-2 
                   text-purple-400 border border-purple-400
