@@ -11,11 +11,7 @@ export const Volunteer: React.FC = () => {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   const nssImages = [
-<<<<<<< HEAD
-    '/images/volunteer/nss/1.jpg',
-=======
     '/images/volunteer/nss/1.JPG',
->>>>>>> 609c51f (Updated)
     '/images/volunteer/nss/2.jpg',
     '/images/volunteer/nss/3.jpg',
     '/images/volunteer/nss/4.jpg',
