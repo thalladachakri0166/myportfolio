@@ -1,7 +1,11 @@
 import React from 'react';
-import {Code2, Users, Zap, Calendar } from 'lucide-react';
+import { Code2, Users, Zap, Calendar } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation'; // <-- Add this import
 
 export const Projects: React.FC = () => {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation();
+
   const projects = [
     {
       title: 'Personal Portfolio Website',
@@ -64,8 +68,16 @@ export const Projects: React.FC = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold text-center mb-12">Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <h2
+        ref={titleRef}
+        className={`text-4xl font-bold text-center mb-12 scroll-fade-up ${titleVisible ? 'visible' : ''}`}
+      >
+        Projects
+      </h2>
+      <div
+        ref={gridRef}
+        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 scroll-fade-up ${gridVisible ? 'visible' : ''}`}
+      >
         {projects.map((project) => (
           <div
             key={project.title}

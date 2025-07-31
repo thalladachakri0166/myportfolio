@@ -1,7 +1,11 @@
 import React from 'react';
 import { Award, ExternalLink } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export const Certifications: React.FC = () => {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation();
+
   const certifications = [
     {
       title: 'AWS Cloud Practitioner',
@@ -29,14 +33,17 @@ export const Certifications: React.FC = () => {
     }
   ];
 
+
   return (
     <div className="w-full max-w-6xl mx-auto p-4">
-      <h2 className="text-4xl font-bold text-center mb-12">Certifications</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {certifications.map((cert) => (
+      <div ref={titleRef} className={`scroll-fade-up ${titleVisible ? 'visible' : ''}`}>
+        <h2 className="text-4xl font-bold text-center mb-12">Certifications</h2>
+      </div>
+      <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {certifications.map((cert, index) => (
           <div
             key={cert.credential}
-            className="group h-[400px] w-full perspective-1000 cursor-pointer"
+            className={`group h-[400px] w-full perspective-1000 cursor-pointer scroll-fade-up scroll-fade-up-delay-${index + 1} ${cardsVisible ? 'visible' : ''}`}
           >
             <div className="relative h-full w-full transition-all duration-500 transform-style-3d group-hover:rotate-y-180 rounded-xl">
               {/* Front of card */}

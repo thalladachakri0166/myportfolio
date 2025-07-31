@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, MapPin, Linkedin, Github, InstagramIcon, Loader2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import toast, { Toaster } from 'react-hot-toast';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 interface FormData {
   name: string;
@@ -10,6 +11,9 @@ interface FormData {
 }
 
 export const Contact: React.FC = () => {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation();
+
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -55,9 +59,11 @@ export const Contact: React.FC = () => {
   return (
     <div className="w-full max-w-4xl mx-auto">
       <Toaster position="top-center" />
-      <h2 className="text-4xl font-bold text-center mb-12">Contact</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="space-y-8">
+      <div ref={titleRef} className={`scroll-fade-up ${titleVisible ? 'visible' : ''}`}>
+        <h2 className="text-4xl font-bold text-center mb-12">Contact</h2>
+      </div>
+      <div ref={contentRef} className={`grid grid-cols-1 md:grid-cols-2 gap-8 scroll-fade-up ${contentVisible ? 'visible' : ''}`}>
+        <div className="space-y-8 scroll-fade-up-delay-1">
           <h3 className="text-2xl font-semibold">Get in Touch</h3>
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
@@ -89,7 +95,7 @@ export const Contact: React.FC = () => {
               <InstagramIcon className="w-6 h-6" />
             </a>
             <a
-              href="https://github.com/thalladachakri0166?tab=repositories"
+              href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-300 hover:text-white transition-colors"
@@ -99,7 +105,7 @@ export const Contact: React.FC = () => {
           </div>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6 scroll-fade-up-delay-2">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
               Name

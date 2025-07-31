@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export const Volunteer: React.FC = () => {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation();
+
   const [currentNssImage, setCurrentNssImage] = useState(0);
   const [currentAriseImage, setCurrentAriseImage] = useState(0);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   const nssImages = [
+<<<<<<< HEAD
     '/images/volunteer/nss/1.jpg',
+=======
+    '/images/volunteer/nss/1.JPG',
+>>>>>>> 609c51f (Updated)
     '/images/volunteer/nss/2.jpg',
     '/images/volunteer/nss/3.jpg',
     '/images/volunteer/nss/4.jpg',
@@ -54,11 +62,13 @@ export const Volunteer: React.FC = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4">
-      <h2 className="text-4xl font-bold text-center mb-12">Volunteer Experience</h2>
+      <div ref={titleRef} className={`scroll-fade-up ${titleVisible ? 'visible' : ''}`}>
+        <h2 className="text-4xl font-bold text-center mb-12">Volunteer Experience</h2>
+      </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div ref={cardsRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* NSS Card */}
-        <div className="bg-white rounded-xl overflow-hidden shadow-xl">
+        <div className={`bg-white rounded-xl overflow-hidden shadow-xl scroll-fade-up scroll-fade-up-delay-1 ${cardsVisible ? 'visible' : ''}`}>
           <div className="px-4 sm:px-10 py-6 sm:py-10 max-w-md mx-auto">
             <div className="relative h-48 sm:h-52 w-full mb-6">
               <img
@@ -97,7 +107,7 @@ export const Volunteer: React.FC = () => {
         </div>
 
         {/* ARISE Card */}
-        <div className="bg-white rounded-xl overflow-hidden shadow-xl">
+        <div className={`bg-white rounded-xl overflow-hidden shadow-xl scroll-fade-up scroll-fade-up-delay-2 ${cardsVisible ? 'visible' : ''}`}>
           <div className="px-4 sm:px-10 py-6 sm:py-10 max-w-md mx-auto">
             <div className="relative h-48 sm:h-52 w-full mb-6">
               <img

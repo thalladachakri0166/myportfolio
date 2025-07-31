@@ -1,7 +1,11 @@
 import React from 'react';
 import { Code2, Database, Layout, Server } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export const Skills: React.FC = () => {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation();
+
   const skills = [
     {
       category: 'Frontend',
@@ -12,13 +16,13 @@ export const Skills: React.FC = () => {
     {
       category: 'Backend',
       icon: <Server className="w-8 h-8 text-green-500" />,
-      items: ['Python', 'Java'],
+      items: ['Node.js', 'Express', 'Python', 'Java'],
       description: 'Strong foundation in server-side development with Node.js and Express. Experience in building RESTful APIs and microservices. Proficient in Python and Java for robust backend solutions.'
     },
     {
       category: 'Database',
       icon: <Database className="w-8 h-8 text-purple-500" />,
-      items: ['PostgreSQL', 'MySQL'],
+      items: ['PostgreSQL', 'MongoDB', 'Redis', 'MySQL'],
       description: 'Skilled in both SQL and NoSQL databases. Experience with data modeling, optimization, and implementing caching solutions. Proficient in handling large-scale data operations.'
     },
     {
@@ -31,12 +35,14 @@ export const Skills: React.FC = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold text-center mb-12">Skills</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {skills.map((skill) => (
+      <div ref={titleRef} className={`scroll-fade-up ${titleVisible ? 'visible' : ''}`}>
+        <h2 className="text-4xl font-bold text-center mb-12">Skills</h2>
+      </div>
+      <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {skills.map((skill, index) => (
           <div
             key={skill.category}
-            className="group h-[300px] perspective-1000"
+            className={`group h-[300px] perspective-1000 scroll-fade-up scroll-fade-up-delay-${index + 1} ${cardsVisible ? 'visible' : ''}`}
           >
             <div className="relative h-full w-full transition-transform duration-500 transform-style-3d group-hover:rotate-y-180">
               {/* Front of card */}
