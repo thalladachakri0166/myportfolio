@@ -29,7 +29,7 @@ export const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
 <<<<<<< HEAD
                 href="/images/profile/thalladachakri1.pdf"
 =======
-                href="/thalladachakri1.pdf"
+                <a href="/images/profile/thalladachakri1.pdf">
 >>>>>>> 609c51f (Updated)
                 download
                 className="relative overflow-hidden px-3 py-2 rounded-lg inline-flex items-center gap-2 
