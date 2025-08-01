@@ -3,7 +3,7 @@
 🎯 My Personal Portfolio
 A fully responsive and optimized portfolio web application designed to showcase professional skills, project repositories, certifications, and resume.
 
-🔗 Live Demo: thalladachakri.netlify.app
+🔗 Live Demo: [Visit My Portfolio](https://thalladachakri.netlify.app/)
 
 💡 Features
 Modular and component-based architecture (Sections: About, Skills, Projects, Certifications, Resume, Contact)
