@@ -20,6 +20,12 @@ export const Contact: React.FC = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailError, setEmailError] = useState<string | null>(null);
+
+  const validateEmail = (email: string) => {
+    // Simple regex for demonstration
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -27,10 +33,26 @@ export const Contact: React.FC = () => {
       ...prev,
       [name]: value
     }));
+
+    if (name === 'email') {
+      setEmailError(validateEmail(value) ? null : 'Please enter a valid email address.');
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Extra validation before sending
+    if (!formData.name.trim()) {
+      toast.error('Name is required.');
+      return;
+    }
+    if (!validateEmail(formData.email)) {
+      setEmailError('Please enter a valid email address.');
+      toast.error('Please enter a valid email address.');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -41,7 +63,7 @@ export const Contact: React.FC = () => {
           name: formData.name,
           email: formData.email,
           message: formData.message,
-          reply_to: formData.email // This ensures replies go back to the sender
+          reply_to: formData.email
         },
         '-G1dGSWmoGEPlo_L8'
       );
@@ -133,6 +155,9 @@ export const Contact: React.FC = () => {
               required
               className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+            {emailError && (
+              <p className="text-red-500 text-xs mt-1">{emailError}</p>
+            )}
           </div>
           <div>
             <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
