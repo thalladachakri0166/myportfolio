@@ -68,7 +68,7 @@ export const Home: React.FC = () => {
             <img
               src="/images/profile/2.jpg"
               alt="Thallada Chakri"
-              className="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-500"
+              className="w-full h-full object-cover object-center transition-all duration-500"
             />
             
             {/* Overlay gradient */}
