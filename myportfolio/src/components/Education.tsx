@@ -5,33 +5,13 @@ import {
   School,
   BookOpen,
   Calendar,
-  CheckCircle2,
   Navigation,
-  Award,
   MapPin,
-  Flag,
 } from 'lucide-react';
-
-interface EducationItem {
-  id: string;
-  year: string;
-  degree: string;
-  board: string;
-  institution: string;
-  description: string;
-  highlights: string[];
-  status: string;
-  icon: React.ReactNode;
-  badgeBg: string;
-  borderColor: string;
-  glowColor: string;
-  signText: string;
-}
 
 export const Education: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Scroll Progress relative to the Education section
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start end', 'end start'],
@@ -43,252 +23,254 @@ export const Education: React.FC = () => {
     restDelta: 0.001,
   });
 
-  // Transform progress to height percentage
-  const roadFillHeight = useTransform(smoothProgress, [0.1, 0.85], ['0%', '100%']);
-  const carPosition = useTransform(smoothProgress, [0.1, 0.85], ['0%', '98%']);
-
-  const educationData: EducationItem[] = [
-    {
-      id: 'btech',
-      year: '2022 - 2026',
-      degree: 'B.Tech - Artificial Intelligence & Data Science',
-      board: 'KL University',
-      institution: 'Koneru Lakshmaiah Education Foundation (KL University)',
-      description:
-        'Specializing in Artificial Intelligence, Machine Learning, Data Analytics, and Full-Stack Engineering. Maintained high academic excellence with a CGPA of 9.15.',
-      highlights: [
-        'Specialization: Artificial Intelligence & Data Science',
-        'Academic Performance: CGPA 9.15 / 10.0',
-        'Student Leadership: ARISE Representative & NSS UNIT-12 Co-Coordinator',
-        'Hands-on practical projects in AI, ML, & Web Technologies',
-      ],
-      status: 'Graduated (Honors)',
-      icon: <GraduationCap className="w-6 h-6 text-purple-400" />,
-      badgeBg: 'bg-purple-500/10 border-purple-500/30 text-purple-400',
-      borderColor: 'group-hover:border-purple-500/60',
-      glowColor: 'from-purple-600/30 via-pink-600/20 to-blue-600/30',
-      signText: 'DESTINATION: B.TECH (AI & DS)',
-    },
-    {
-      id: 'intermediate',
-      year: '2020 - 2022',
-      degree: 'Intermediate (12th Standard - MPC)',
-      board: 'TSBIE (Telangana State Board of Intermediate Education)',
-      institution: 'Krishnaveni Junior College',
-      description:
-        'Focused on Mathematics, Physics, and Chemistry (MPC). Developed rigorous analytical skills, mathematical logic, and scientific problem-solving abilities.',
-      highlights: [
-        'Curriculum: Mathematics, Physics & Chemistry (MPC)',
-        'Board: Telangana State Board of Intermediate Education (TSBIE)',
-        'Built strong foundation for engineering competitive exams',
-      ],
-      status: 'Completed',
-      icon: <BookOpen className="w-6 h-6 text-blue-400" />,
-      badgeBg: 'bg-blue-500/10 border-blue-500/30 text-blue-400',
-      borderColor: 'group-hover:border-blue-500/60',
-      glowColor: 'from-blue-600/30 via-cyan-600/20 to-purple-600/30',
-      signText: 'CHECKPOINT 02: INTERMEDIATE',
-    },
-    {
-      id: '10th',
-      year: '2019 - 2020',
-      degree: 'Secondary School Certificate (10th Standard)',
-      board: 'CBSE (Central Board of Secondary Education)',
-      institution: 'Gorkey Public School',
-      description:
-        'Completed secondary education with comprehensive academic foundation across science, mathematics, and languages under the Central Board of Secondary Education.',
-      highlights: [
-        'Curriculum: Central Board of Secondary Education (CBSE)',
-        'Gorkey Public School',
-        'Participated actively in school science exhibitions & extra-curriculars',
-      ],
-      status: 'Completed',
-      icon: <School className="w-6 h-6 text-amber-400" />,
-      badgeBg: 'bg-amber-500/10 border-amber-500/30 text-amber-400',
-      borderColor: 'group-hover:border-amber-500/60',
-      glowColor: 'from-amber-600/30 via-orange-600/20 to-yellow-600/30',
-      signText: 'START LINE: 10TH CBSE',
-    },
-  ];
+  const pathLength = useTransform(smoothProgress, [0.15, 0.85], [0, 1]);
 
   return (
     <div
+      id="education"
       ref={containerRef}
-      className="w-full max-w-6xl mx-auto px-4 py-20 scroll-mt-24 relative overflow-hidden"
+      className="w-full max-w-6xl mx-auto px-2 sm:px-4 py-16 scroll-mt-24 relative overflow-hidden"
     >
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-20"
+        transition={{ duration: 0.5 }}
+        className="text-center mb-8 sm:mb-12"
       >
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
-          <Navigation className="w-4 h-4 text-blue-400 animate-bounce" /> Academic Highway
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-wider mb-3 shadow-sm">
+          <Navigation className="w-4 h-4 text-amber-400 rotate-90 animate-pulse" /> Winding Academic Roadmap
         </div>
         <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
-          Education <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-amber-400 bg-clip-text text-transparent">Roadmap</span>
+          Education <span className="bg-gradient-to-r from-amber-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">Journey</span>
         </h2>
-        <p className="text-gray-400 text-sm sm:text-base mt-3 max-w-xl mx-auto">
-          An interactive roadway journey mapping academic milestones from high school foundation to specialized engineering degree.
+        <p className="text-gray-400 text-xs sm:text-base mt-2 max-w-lg mx-auto">
+          A curved road timeline connecting 3 distinct education milestones with color-coded road dots & indicator lines.
         </p>
       </motion.div>
 
-      {/* Main Roadway Container */}
-      <div className="relative my-8">
+      {/* --- ROADWAY CONTAINER WITH CARDS ENTIRELY OUTSIDE ROAD & CLEAR CONNECTOR LINES --- */}
+      <div className="relative min-h-[460px] sm:min-h-[580px] flex items-center justify-center my-2">
 
-        {/* --- DESKTOP CENTRAL ROAD & CAR (md+ screens) --- */}
-        <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-4 bottom-4 w-14 bg-gray-950/90 border-x-2 border-gray-800 rounded-full shadow-2xl overflow-hidden z-10">
-          {/* Asphalt texture / stripes */}
-          <div className="absolute inset-0 bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:8px_8px] opacity-40" />
+        {/* SVG Curved Winding Roadway, Road Dots & Connector Lines (Visible on BOTH Mobile & Desktop) */}
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none overflow-visible"
+          viewBox="0 0 1000 540"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <linearGradient id="roadGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.5" />
+              <stop offset="50%" stopColor="#06b6d4" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#a855f7" stopOpacity="0.5" />
+            </linearGradient>
+          </defs>
 
-          {/* Animated Moving Yellow Center Lane Divider */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 border-r-2 border-dashed border-amber-400/80 animate-pulse" />
-
-          {/* Glowing Neon Road Fill on Scroll */}
-          <motion.div
-            style={{ height: roadFillHeight }}
-            className="absolute left-0 right-0 top-0 bg-gradient-to-b from-purple-600 via-blue-500 to-amber-400 opacity-30 blur-sm"
+          {/* 1. Outer Asphalt Base */}
+          <path
+            d="M 40,270 C 120,195 140,195 220,195 C 320,195 400,345 500,345 C 600,345 680,195 780,195 C 860,195 880,270 960,270"
+            fill="none"
+            stroke="#1e293b"
+            strokeWidth="48"
+            strokeLinecap="round"
           />
 
-          {/* Traveling Sports Car / Vehicle Marker */}
-          <motion.div
-            style={{ top: carPosition }}
-            className="absolute left-1/2 -translate-x-1/2 z-30 transition-transform duration-75"
-          >
-            <div className="relative p-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 border border-white/40 shadow-xl shadow-blue-500/50 flex items-center justify-center animate-pulse">
-              <Navigation className="w-5 h-5 text-white transform rotate-180 fill-white" />
-            </div>
-          </motion.div>
-        </div>
-
-        {/* --- MOBILE LEFT ROAD & CAR (sm screens) --- */}
-        <div className="md:hidden absolute left-5 top-4 bottom-4 w-10 bg-gray-950 border-x border-gray-800 rounded-full overflow-hidden z-10">
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 border-r-2 border-dashed border-amber-400/70" />
-          <motion.div
-            style={{ height: roadFillHeight }}
-            className="absolute left-0 right-0 top-0 bg-gradient-to-b from-purple-600 via-blue-500 to-amber-400 opacity-40"
+          {/* 2. Inner Asphalt Track */}
+          <path
+            d="M 40,270 C 120,195 140,195 220,195 C 320,195 400,345 500,345 C 600,345 680,195 780,195 C 860,195 880,270 960,270"
+            fill="none"
+            stroke="#090d16"
+            strokeWidth="38"
+            strokeLinecap="round"
           />
-          <motion.div
-            style={{ top: carPosition }}
-            className="absolute left-1/2 -translate-x-1/2 z-30"
-          >
-            <div className="p-1.5 rounded-full bg-blue-600 border border-white/40 shadow-lg">
-              <Navigation className="w-4 h-4 text-white transform rotate-180 fill-white" />
-            </div>
-          </motion.div>
-        </div>
 
-        {/* --- MILESTONE CARDS ALONG THE ROAD --- */}
-        <div className="space-y-16 sm:space-y-24 relative z-20">
-          {educationData.map((item, index) => {
-            const isEven = index % 2 === 0;
+          {/* 3. Glowing Edge Aura */}
+          <path
+            d="M 40,270 C 120,195 140,195 220,195 C 320,195 400,345 500,345 C 600,345 680,195 780,195 C 860,195 880,270 960,270"
+            fill="none"
+            stroke="url(#roadGlow)"
+            strokeWidth="42"
+            strokeLinecap="round"
+          />
 
-            return (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 50, x: isEven ? -40 : 40 }}
-                whileInView={{ opacity: 1, y: 0, x: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.7, delay: index * 0.15, ease: 'easeOut' }}
-                className={`relative flex flex-col md:flex-row items-center ${
-                  isEven ? 'md:flex-row-reverse' : ''
-                }`}
-              >
+          {/* 4. Dashed Center Yellow Lane Line */}
+          <path
+            d="M 40,270 C 120,195 140,195 220,195 C 320,195 400,345 500,345 C 600,345 680,195 780,195 C 860,195 880,270 960,270"
+            fill="none"
+            stroke="#fbbf24"
+            strokeWidth="3"
+            strokeDasharray="10 10"
+          />
 
-                {/* Road Sign Banner Header (Floating above card) */}
-                <div className="w-full md:w-1/2 px-0 md:px-8 pl-14 md:pl-8">
-                  <motion.div
-                    whileHover={{ y: -6, scale: 1.02 }}
-                    className="relative group"
-                  >
-                    {/* Ambient Glow Aura */}
-                    <div
-                      className={`absolute -inset-1 bg-gradient-to-r ${item.glowColor} rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
-                    />
+          {/* 5. Animated Scroll Progress Line */}
+          <motion.path
+            d="M 40,270 C 120,195 140,195 220,195 C 320,195 400,345 500,345 C 600,345 680,195 780,195 C 860,195 880,270 960,270"
+            fill="none"
+            stroke="#38bdf8"
+            strokeWidth="4"
+            style={{ pathLength }}
+          />
 
-                    {/* Card Container */}
-                    <div
-                      className={`relative glass-card rounded-3xl p-6 sm:p-8 border border-gray-800/90 ${item.borderColor} bg-gray-950/85 backdrop-blur-xl shadow-2xl transition-all duration-500`}
-                    >
-                      {/* Road Highway Sign Tag Header */}
-                      <div className="flex items-center justify-between mb-4 pb-3 border-b border-gray-800/80">
-                        <div className="flex items-center gap-2">
-                          <span className="px-3 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[11px] font-mono font-bold tracking-wider uppercase flex items-center gap-1">
-                            <Flag className="w-3 h-3 text-amber-400" /> {item.signText}
-                          </span>
-                        </div>
-                        <span className="text-xs font-semibold text-gray-400 flex items-center gap-1.5 bg-gray-900/80 px-2.5 py-1 rounded-lg border border-gray-800">
-                          <Calendar className="w-3.5 h-3.5 text-blue-400" /> {item.year}
-                        </span>
-                      </div>
+          {/* --- 3 CLEAR VISIBLE CONNECTOR LINES FROM ROAD DOT TO CARDS --- */}
+          {/* Line 1: Amber Line connecting Road Dot to 10th Card */}
+          <line x1="220" y1="195" x2="220" y2="135" stroke="#f59e0b" strokeWidth="3" strokeDasharray="5 5" opacity="0.95" />
 
-                      {/* Title & Board */}
-                      <div className="space-y-1.5 mb-4">
-                        <div className="flex items-center gap-2">
-                          <span className={`p-2 rounded-xl bg-gray-900 border border-gray-800 shadow-md`}>
-                            {item.icon}
-                          </span>
-                          <div>
-                            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight group-hover:text-blue-300 transition-colors">
-                              {item.degree}
-                            </h3>
-                            <p className="text-xs font-semibold text-gray-400 flex items-center gap-1 mt-0.5">
-                              <Award className="w-3.5 h-3.5 text-purple-400" /> {item.board}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+          {/* Line 2: Cyan Line connecting Road Dot to Intermediate Card */}
+          <line x1="500" y1="345" x2="500" y2="405" stroke="#06b6d4" strokeWidth="3" strokeDasharray="5 5" opacity="0.95" />
 
-                      {/* Institution */}
-                      <div className="flex items-center gap-1.5 text-xs text-gray-300 mb-4 bg-gray-900/40 p-2.5 rounded-xl border border-gray-800/60">
-                        <MapPin className="w-4 h-4 text-rose-400 flex-shrink-0" />
-                        <span className="font-medium">{item.institution}</span>
-                      </div>
+          {/* Line 3: Purple Line connecting Road Dot to B.Tech Card */}
+          <line x1="780" y1="195" x2="780" y2="135" stroke="#a855f7" strokeWidth="3" strokeDasharray="5 5" opacity="0.95" />
 
-                      {/* Description */}
-                      <p className="text-gray-300 text-sm leading-relaxed mb-5">
-                        {item.description}
-                      </p>
+          {/* --- 3 COLOR-CODED ROAD DOTS IN THE ROAD --- */}
+          {/* Dot 1: Amber Road Dot (10th) */}
+          <circle cx="220" cy="195" r="14" fill="#090d16" stroke="#f59e0b" strokeWidth="4" />
+          <circle cx="220" cy="195" r="5" fill="#f59e0b" />
 
-                      {/* Highlights */}
-                      <div className="space-y-2 pt-3 border-t border-gray-800/80">
-                        {item.highlights.map((hl, i) => (
-                          <div key={i} className="flex items-start gap-2 text-xs text-gray-300">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                            <span>{hl}</span>
-                          </div>
-                        ))}
-                      </div>
+          {/* Dot 2: Cyan Road Dot (Intermediate) */}
+          <circle cx="500" cy="345" r="14" fill="#090d16" stroke="#06b6d4" strokeWidth="4" />
+          <circle cx="500" cy="345" r="5" fill="#06b6d4" />
 
-                      {/* Card Footer Status */}
-                      <div className="mt-6 pt-3 border-t border-gray-800/80 flex items-center justify-between text-xs">
-                        <span className="text-gray-400">Status</span>
-                        <span className={`px-3 py-1 rounded-full font-bold text-xs border ${item.badgeBg}`}>
-                          {item.status}
-                        </span>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
+          {/* Dot 3: Purple Road Dot (University) */}
+          <circle cx="780" cy="195" r="14" fill="#090d16" stroke="#a855f7" strokeWidth="4" />
+          <circle cx="780" cy="195" r="5" fill="#a855f7" />
+        </svg>
 
-                {/* Central Road Marker Node (Dot on the road) */}
-                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-20 items-center justify-center">
-                  <div className="w-10 h-10 rounded-full bg-gray-950 border-4 border-blue-500 shadow-xl shadow-blue-500/40 flex items-center justify-center">
-                    <div className="w-3.5 h-3.5 rounded-full bg-amber-400 animate-ping" />
+        {/* 3 Milestone Card Containers (Positioned completely outside the road on ALL screens) */}
+        <div className="relative w-full grid grid-cols-3 gap-2 sm:gap-6 z-10 px-1 sm:px-4 h-full">
+
+          {/* --- SCHOOLING (10TH) CARD: AMBER THEME (ENTIRELY ABOVE ROAD) --- */}
+          <div className="flex flex-col items-center sm:items-start text-left justify-start -mt-2 sm:-mt-4">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              whileHover={{ y: -6, scale: 1.03 }}
+              className="relative group w-full max-w-[115px] sm:max-w-[260px]"
+            >
+              {/* Amber Glow */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-amber-600/30 via-orange-600/20 to-yellow-600/30 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <div className="relative glass-card rounded-lg sm:rounded-xl p-2 sm:p-4 border border-amber-500/40 bg-gray-950/95 backdrop-blur-xl shadow-xl shadow-amber-500/10 flex flex-col justify-between transition-all duration-300">
+                <div className="flex items-center justify-between gap-1 mb-1.5 pb-1.5 sm:mb-2 sm:pb-2 border-b border-gray-800/80">
+                  <div className="flex items-center gap-1">
+                    <School className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 flex-shrink-0" />
+                    <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400">
+                      CBSE
+                    </span>
                   </div>
+                  <span className="text-[9px] sm:text-[10px] font-semibold text-amber-400 flex items-center gap-0.5">
+                    <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-amber-400" />
+                    <span className="hidden sm:inline">2019 - 2020</span>
+                    <span className="sm:hidden">19-20</span>
+                  </span>
                 </div>
 
-                {/* Opposite empty space for desktop symmetry */}
-                <div className="hidden md:block w-1/2" />
+                <h3 className="text-xs sm:text-base font-extrabold text-white tracking-tight group-hover:text-amber-300 transition-colors my-0.5 sm:my-1">
+                  10th Standard
+                </h3>
 
-              </motion.div>
-            );
-          })}
+                <div className="flex items-center gap-1 text-[10px] sm:text-[11px] text-gray-300 pt-1.5 sm:pt-2 border-t border-gray-800/80 bg-gray-900/40 p-1.5 sm:p-2 rounded-lg mt-1 sm:mt-2">
+                  <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-rose-400 flex-shrink-0" />
+                  <span className="font-semibold text-gray-200 truncate">
+                    <span className="hidden sm:inline">Gorkey Public School</span>
+                    <span className="sm:hidden">Gorkey Public</span>
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* --- INTERMEDIATE CARD: CYAN THEME (ENTIRELY BELOW ROAD) --- */}
+          <div className="flex flex-col items-center text-left justify-end pt-56 sm:pt-96">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              whileHover={{ y: 6, scale: 1.03 }}
+              className="relative group w-full max-w-[115px] sm:max-w-[260px]"
+            >
+              {/* Cyan Glow */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-600/30 via-blue-600/20 to-teal-600/30 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <div className="relative glass-card rounded-lg sm:rounded-xl p-2 sm:p-4 border border-cyan-500/40 bg-gray-950/95 backdrop-blur-xl shadow-xl shadow-cyan-500/10 flex flex-col justify-between transition-all duration-300">
+                <div className="flex items-center justify-between gap-1 mb-1.5 pb-1.5 sm:mb-2 sm:pb-2 border-b border-gray-800/80">
+                  <div className="flex items-center gap-1">
+                    <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 flex-shrink-0" />
+                    <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
+                      TSBIE
+                    </span>
+                  </div>
+                  <span className="text-[9px] sm:text-[10px] font-semibold text-cyan-400 flex items-center gap-0.5">
+                    <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-cyan-400" />
+                    <span className="hidden sm:inline">2020 - 2022</span>
+                    <span className="sm:hidden">20-22</span>
+                  </span>
+                </div>
+
+                <h3 className="text-xs sm:text-base font-extrabold text-white tracking-tight group-hover:text-cyan-300 transition-colors my-0.5 sm:my-1">
+                  Intermediate
+                </h3>
+
+                <div className="flex items-center gap-1 text-[10px] sm:text-[11px] text-gray-300 pt-1.5 sm:pt-2 border-t border-gray-800/80 bg-gray-900/40 p-1.5 sm:p-2 rounded-lg mt-1 sm:mt-2">
+                  <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-rose-400 flex-shrink-0" />
+                  <span className="font-semibold text-gray-200 truncate">
+                    <span className="hidden sm:inline">Krishnaveni Junior College</span>
+                    <span className="sm:hidden">Krishnaveni Jr</span>
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* --- UNIVERSITY (B.TECH) CARD: PURPLE THEME (ENTIRELY ABOVE ROAD) --- */}
+          <div className="flex flex-col items-center sm:items-end text-left justify-start -mt-2 sm:-mt-4">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ y: -6, scale: 1.03 }}
+              className="relative group w-full max-w-[115px] sm:max-w-[260px]"
+            >
+              {/* Purple Glow */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/30 via-pink-600/20 to-indigo-600/30 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <div className="relative glass-card rounded-lg sm:rounded-xl p-2 sm:p-4 border border-purple-500/40 bg-gray-950/95 backdrop-blur-xl shadow-xl shadow-purple-500/10 flex flex-col justify-between transition-all duration-300">
+                <div className="flex items-center justify-between gap-1 mb-1.5 pb-1.5 sm:mb-2 sm:pb-2 border-b border-gray-800/80">
+                  <div className="flex items-center gap-1">
+                    <GraduationCap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0" />
+                    <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-purple-500/10 border border-purple-500/30 text-purple-400">
+                      AI & DS
+                    </span>
+                  </div>
+                  <span className="text-[9px] sm:text-[10px] font-semibold text-purple-400 flex items-center gap-0.5">
+                    <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-purple-400" />
+                    <span className="hidden sm:inline">2022 - 2026</span>
+                    <span className="sm:hidden">22-26</span>
+                  </span>
+                </div>
+
+                <h3 className="text-xs sm:text-base font-extrabold text-white tracking-tight group-hover:text-purple-300 transition-colors my-0.5 sm:my-1">
+                  B. Tech
+                </h3>
+
+                <div className="flex items-center gap-1 text-[10px] sm:text-[11px] text-gray-300 pt-1.5 sm:pt-2 border-t border-gray-800/80 bg-gray-900/40 p-1.5 sm:p-2 rounded-lg mt-1 sm:mt-2">
+                  <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-rose-400 flex-shrink-0" />
+                  <span className="font-semibold text-gray-200 truncate">
+                    <span className="hidden sm:inline">KL University</span>
+                    <span className="sm:hidden">KL Univ</span>
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
         </div>
-
       </div>
+
     </div>
   );
 };
