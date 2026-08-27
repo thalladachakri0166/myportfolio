@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code2, FolderGit2, Github, ExternalLink, Sparkles, CheckCircle2, ArrowRight, X, ShieldCheck, Zap } from 'lucide-react';
+import { Code2, FolderGit2, Github, ExternalLink, CheckCircle2, ArrowRight, X, ShieldCheck, Zap } from 'lucide-react';
 
 interface Project {
   id: string;
@@ -221,7 +221,7 @@ export const Projects: React.FC = () => {
               {/* Card Footer CTA */}
               <div className="p-4 bg-gray-950/60 border-t border-gray-800/80 flex items-center justify-between text-xs text-blue-400 font-semibold group-hover:text-blue-300 transition-colors">
                 <span className="flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-blue-400" /> View Details & Impact
+                  <Zap className="w-3.5 h-3.5 text-blue-400" /> View Details & Impact
                 </span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
               </div>

@@ -8,7 +8,7 @@ interface NavBarProps {
 }
 
 export const NavBar: React.FC<NavBarProps> = ({ onNavigate, activeSection = 'home' }) => {
-  const sections = ['home', 'about', 'projects', 'skills', 'certifications', 'volunteer', 'contact'];
+  const sections = ['home', 'about', 'education', 'projects', 'skills', 'certifications', 'volunteer', 'contact'];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 

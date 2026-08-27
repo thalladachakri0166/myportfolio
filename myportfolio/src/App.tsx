@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { NavBar } from './components/NavBar';
 import { Home } from './components/Home';
 import { About } from './components/About';
+import { Education } from './components/Education';
 import { Skills } from './components/Skills';
 import { Certifications } from './components/Certifications';
 import { Projects } from './components/Projects';
@@ -9,6 +10,7 @@ import { Contact } from './components/Contact';
 import { Volunteer } from './components/Volunteer';
 import { BackgroundCanvas } from './components/BackgroundCanvas';
 import { ScrollToTop } from './components/ScrollToTop';
+import { Footer } from './components/Footer';
 
 function App() {
   const [activeSection, setActiveSection] = useState<string>('home');
@@ -16,6 +18,7 @@ function App() {
   const sectionRefs = {
     home: useRef<HTMLDivElement>(null),
     about: useRef<HTMLDivElement>(null),
+    education: useRef<HTMLDivElement>(null),
     projects: useRef<HTMLDivElement>(null),
     skills: useRef<HTMLDivElement>(null),
     certifications: useRef<HTMLDivElement>(null),
@@ -83,6 +86,10 @@ function App() {
           <About />
         </section>
 
+        <section id="education" ref={sectionRefs.education} className="min-h-screen flex items-center justify-center">
+          <Education />
+        </section>
+
         <section id="projects" ref={sectionRefs.projects} className="min-h-screen flex items-center justify-center">
           <Projects />
         </section>
@@ -105,11 +112,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 w-full bg-gray-950/90 border-t border-gray-800 py-6 mt-auto">
-        <div className="container mx-auto px-4 text-center text-gray-400 text-sm">
-          <p>&copy; {new Date().getFullYear()} Thallada Chakri. Built with React, TypeScript & Framer Motion.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code2, Brain, Database, Wrench, Sparkles, CheckCircle2, Terminal, Layers, Cpu, Globe, Server, Cloud, ShieldCheck, X } from 'lucide-react';
+import { Code2, Brain, Database, Wrench, CheckCircle2, Terminal, Layers, Cpu, Globe, Server, Cloud, ShieldCheck, X } from 'lucide-react';
 
 interface SkillItem {
   name: string;
@@ -214,7 +214,7 @@ export const Skills: React.FC = () => {
         className="text-center mb-10"
       >
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-3">
-          <Sparkles className="w-3.5 h-3.5" /> Technical Matrix
+          <Cpu className="w-3.5 h-3.5" /> Technical Matrix
         </div>
         <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
           Skills & <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Tech Ecosystem</span>

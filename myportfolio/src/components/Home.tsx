@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { Linkedin, ArrowRight, Sparkles, Terminal, Award, Code } from 'lucide-react';
+import { Linkedin, ArrowRight, Terminal, Award, Code } from 'lucide-react';
 
 export const Home: React.FC = () => {
   // Rotating role titles
@@ -62,7 +62,7 @@ export const Home: React.FC = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium shadow-inner"
           >
-            <Sparkles className="w-4 h-4 animate-pulse text-blue-400" />
+            <Code className="w-4 h-4 text-blue-400" />
             <span>Welcome to my interactive portfolio</span>
           </motion.div>
 
