@@ -26,8 +26,16 @@ function App() {
     contact: useRef<HTMLDivElement>(null),
   };
 
-  const scrollToSection = (sectionName: keyof typeof sectionRefs) => {
-    sectionRefs[sectionName].current?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToSection = (sectionName: string) => {
+    const targetRef = sectionRefs[sectionName as keyof typeof sectionRefs];
+    if (targetRef && targetRef.current) {
+      targetRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      const el = document.getElementById(sectionName);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   };
 
   // Scroll Spy with Intersection Observer

@@ -88,7 +88,7 @@ export const Projects: React.FC = () => {
   ];
 
   return (
-    <div id="projects" className="w-full max-w-6xl mx-auto px-4 py-16 scroll-mt-24">
+    <div className="w-full max-w-6xl mx-auto px-4 py-16 scroll-mt-24">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

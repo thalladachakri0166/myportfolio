@@ -44,7 +44,6 @@ export const About: React.FC = () => {
 
   return (
     <div
-      id="about"
       data-section="about"
       className="w-full max-w-6xl mx-auto px-4 py-16 scroll-mt-24"
     >

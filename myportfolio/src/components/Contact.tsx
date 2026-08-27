@@ -234,7 +234,7 @@ export const Contact: React.FC = () => {
   ];
 
   return (
-    <div id="contact" className="w-full max-w-5xl mx-auto px-4 py-16 scroll-mt-24">
+    <div className="w-full max-w-5xl mx-auto px-4 py-16 scroll-mt-24">
       <Toaster position="top-center" />
 
       {/* Header */}

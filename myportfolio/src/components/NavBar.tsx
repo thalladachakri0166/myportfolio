@@ -27,6 +27,17 @@ export const NavBar: React.FC<NavBarProps> = ({ onNavigate, activeSection = 'hom
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleMobileClick = (section: string) => {
+    setIsMenuOpen(false);
+    setTimeout(() => {
+      onNavigate(section);
+      const el = document.getElementById(section);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 60);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* Scroll Progress Bar at the top */}
@@ -50,7 +61,8 @@ export const NavBar: React.FC<NavBarProps> = ({ onNavigate, activeSection = 'hom
             {/* Mobile Header elements */}
             <div className="flex items-center justify-between w-full md:hidden">
               <button
-                className="p-2 text-gray-300 hover:text-white rounded-lg bg-gray-900/60 border border-gray-800 focus:outline-none"
+                type="button"
+                className="p-2 text-gray-300 hover:text-white rounded-lg bg-gray-900/60 border border-gray-800 focus:outline-none cursor-pointer"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle Navigation Menu"
               >
@@ -75,8 +87,9 @@ export const NavBar: React.FC<NavBarProps> = ({ onNavigate, activeSection = 'hom
                   return (
                     <button
                       key={section}
+                      type="button"
                       onClick={() => onNavigate(section)}
-                      className={`relative px-4 py-1.5 text-sm font-medium transition-colors capitalize rounded-full ${
+                      className={`relative px-4 py-1.5 text-sm font-medium transition-colors capitalize rounded-full cursor-pointer ${
                         isActive ? 'text-white' : 'text-gray-400 hover:text-gray-200'
                       }`}
                     >
@@ -126,11 +139,9 @@ export const NavBar: React.FC<NavBarProps> = ({ onNavigate, activeSection = 'hom
                   return (
                     <button
                       key={section}
-                      onClick={() => {
-                        onNavigate(section);
-                        setIsMenuOpen(false);
-                      }}
-                      className={`px-4 py-3 text-left text-sm font-medium rounded-xl transition-all capitalize flex items-center justify-between ${
+                      type="button"
+                      onClick={() => handleMobileClick(section)}
+                      className={`px-4 py-3 text-left text-sm font-medium rounded-xl transition-all capitalize flex items-center justify-between cursor-pointer ${
                         isActive
                           ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30'
                           : 'text-gray-300 hover:bg-gray-900 hover:text-white'

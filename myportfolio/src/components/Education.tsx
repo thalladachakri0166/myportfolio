@@ -113,7 +113,6 @@ export const Education: React.FC = () => {
 
   return (
     <div
-      id="education"
       ref={containerRef}
       className="w-full max-w-6xl mx-auto px-4 py-20 scroll-mt-24 relative overflow-hidden"
     >
